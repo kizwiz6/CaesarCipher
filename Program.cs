@@ -9,7 +9,14 @@
             Console.WriteLine("Enter your secret message:");
             string input = Console.ReadLine().ToLower();
             char[] secretMessage = input.ToCharArray();
+            char[] encryptedMessage = Encrypt(alphabet, secretMessage);
 
+            string encodedString = String.Join("", encryptedMessage);
+            Console.WriteLine($"Your encoded message is: {encodedString}.");
+        }
+
+        private static char[] Encrypt(char[] alphabet, char[] secretMessage)
+        {
             char[] encryptedMessage = new char[secretMessage.Length];
 
             for (int i = 0; i < secretMessage.Length; i++)
@@ -31,8 +38,7 @@
 
             }
 
-            string encodedString = String.Join("", encryptedMessage);
-            Console.WriteLine($"Your encoded message is: {encodedString}.");
+            return encryptedMessage;
         }
     }
 }
