@@ -15,10 +15,20 @@
             for (int i = 0; i < secretMessage.Length; i++)
             {
                 char letter = secretMessage[i];
-                int letterPosition = Array.IndexOf(alphabet, letter);
-                int newLetterPosition = (letterPosition + 3) % 26;
-                char letterEncoded = alphabet[newLetterPosition];
-                encryptedMessage[i] = letterEncoded;
+
+                if (char.IsLetter(letter))
+                {
+                    int letterPosition = Array.IndexOf(alphabet, letter);
+                    int newLetterPosition = (letterPosition + 3) % 26;
+                    char letterEncoded = alphabet[newLetterPosition];
+                    encryptedMessage[i] = letterEncoded;
+                }
+                else
+                {
+                    // If it's not a letter, keep it as is
+                    encryptedMessage[i] = letter;
+                }
+
             }
 
             string encodedString = String.Join("", encryptedMessage);
